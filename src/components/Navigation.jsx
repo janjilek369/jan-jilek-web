@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 
 const navItems = [
   { id: 'about', label: 'O mně' },
   { id: 'experience', label: 'Zkušenosti' },
   { id: 'projects', label: 'Projekty' },
+  { id: 'blog', label: 'Blog' },
   { id: 'offer', label: 'Nabídka' },
   { id: 'contact', label: 'Kontakt' },
 ]
@@ -69,20 +71,34 @@ const Navigation = () => {
         </button>
       </div>
 
-      {mobileOpen && (
-        <div className="md:hidden px-8 pb-4">
-          {navItems.map(({ id, label }) => (
+      {mobileOpen &&
+        createPortal(
+          <div
+            className="md:hidden fixed inset-0 w-screen min-h-screen bg-white z-[9999] flex flex-col pt-20 px-8"
+            style={{ minHeight: '100dvh' }}
+            aria-hidden={!mobileOpen}
+          >
             <button
-              key={id}
               type="button"
-              onClick={() => scrollTo(id)}
-              className="block w-full text-left py-2 text-gray-500 font-medium hover:text-dark"
+              onClick={() => setMobileOpen(false)}
+              className="absolute top-5 right-8 p-2 text-dark"
+              aria-label="Zavřít menu"
             >
-              {label}
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
-          ))}
-        </div>
-      )}
+            {navItems.map(({ id, label }) => (
+              <button
+                key={id}
+                type="button"
+                onClick={() => scrollTo(id)}
+                className="block w-full text-left py-3 text-gray-500 font-medium hover:text-dark text-lg border-b border-gray-100 last:border-0"
+              >
+                {label}
+              </button>
+            ))}
+          </div>,
+          document.body
+        )}
     </nav>
   )
 }

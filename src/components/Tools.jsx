@@ -2,7 +2,11 @@ import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 
 const tools = [
   { name: 'Mac', desc: 'pracovní základ' },
-  { name: 'Claude Opus', desc: 'strategie, texty, přemýšlení' },
+  {
+    type: 'ai',
+    tools: [{ name: 'Claude' }, { name: 'ChatGPT' }, { name: 'Gemini' }],
+    subtitle: 'Každý AI má své silné stránky. Kombinuji je podle situace.',
+  },
   { name: 'Cursor', desc: 'tvorba webů a aplikací' },
   { name: 'Gamma', desc: 'prezentace a weby' },
 ]
@@ -24,16 +28,27 @@ const Tools = () => {
           S čím pracuji
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {tools.map((t, i) => (
-            <div key={i} className="text-left">
-              <div className="font-serif text-xl text-dark font-normal mb-1">
-                {t.name}
+          {tools.map((t, i) =>
+            t.type === 'ai' ? (
+              <div key={i} className="text-left">
+                <div className="font-serif text-xl text-dark font-normal mb-1">
+                  {t.tools.map((ai) => ai.name).join(' | ')}
+                </div>
+                <div className="text-base text-gray-500">
+                  {t.subtitle}
+                </div>
               </div>
-              <div className="text-base text-gray-500">
-                {t.desc}
+            ) : (
+              <div key={i} className="text-left">
+                <div className="font-serif text-xl text-dark font-normal mb-1">
+                  {t.name}
+                </div>
+                <div className="text-base text-gray-500">
+                  {t.desc}
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          )}
         </div>
       </div>
     </section>

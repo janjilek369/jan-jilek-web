@@ -1,9 +1,10 @@
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
+import { posthog } from '../lib/posthog'
 
 const contactLinks = [
-  { label: 'LinkedIn', value: 'Jan Jílek', href: 'https://www.linkedin.com/in/jan-j%C3%ADlek-351356169/', icon: 'in' },
-  { label: 'Substack', value: 'substack.com/@jilekjan', href: 'https://substack.com/@jilekjan', icon: '✉' },
-  { label: 'E-mail', value: 'honzajilek@seznam.cz', href: 'mailto:honzajilek@seznam.cz', icon: '@' },
+  { label: 'LinkedIn', value: 'Jan Jílek', href: 'https://www.linkedin.com/in/jan-j%C3%ADlek-351356169/', icon: 'in', event: 'linkedin_profile_clicked' },
+  { label: 'Substack', value: 'substack.com/@jilekjan', href: 'https://substack.com/@jilekjan', icon: '✉', event: 'newsletter_subscription_started' },
+  { label: 'E-mail', value: 'honzajilek@seznam.cz', href: 'mailto:honzajilek@seznam.cz', icon: '@', event: 'contact_info_viewed' },
 ]
 
 const Contact = () => {
@@ -33,6 +34,7 @@ const Contact = () => {
                 href={link.href}
                 target={link.href.startsWith('http') ? '_blank' : undefined}
                 rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                onClick={() => posthog.capture(link.event)}
                 className="flex items-center gap-4 py-5 px-6 border border-[rgba(255,255,255,0.1)] rounded-xl text-white transition-all duration-300 hover:border-[rgba(255,255,255,0.3)] hover:bg-[rgba(255,255,255,0.05)]"
               >
                 <div className="w-10 h-10 rounded-full bg-[rgba(255,255,255,0.1)] flex items-center justify-center text-[1.1rem] flex-shrink-0">

@@ -4,7 +4,7 @@ const stats = [
   { number: '15 let', label: 'v obchodě a vzdělávání' },
   { number: '1 000+', label: 'spokojených klientů' },
   { number: 'Desítky mil.', label: 'v prodejích ročně' },
-  { number: 'Stovky', label: 'proškolených učitelů' },
+  { number: 'Stovky', label: 'proškolených učitelů za 5 let' },
   { number: '10+ let', label: 'newsletter pro školy' },
 ]
 
@@ -44,6 +44,9 @@ const Experience = () => {
           </p>
           <p className="text-lg text-gray-700 mb-4 leading-[1.8]">
             Specializuji se na B2B prodej technologií do vzdělávání. Rozumím potřebám škol, cenotvorbě, výběrovým řízením i technické správě zařízení.
+          </p>
+          <p className="text-lg text-gray-700 leading-[1.8]">
+            Dnes přidávám třetí rozměr: s AI realizuji projekty od nápadu po výsledek a zkušenosti sdílím na Substacku a webinářích.
           </p>
         </div>
       </div>

@@ -1,8 +1,9 @@
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 
 const offers = [
+  { tag: 'AI KONZULTACE', title: 'AI v praxi — předám co umím', desc: 'Používám AI denně na reálných projektech. Rád předám zkušenosti — firmám i jednotlivcům. Osobně v okolí Pardubic a Hradce Králové, online kdekoliv.' },
   { title: 'Webináře a školení', desc: 'Online i offline školení pro pedagogické sbory. Od správy iPadů po práci s AI nástroji ve výuce.' },
-  { title: 'Konzultace', desc: 'Pomůžu vám vybrat správné technologie, nastavit správu zařízení a naučit váš tým s nimi reálně pracovat. Nejde jen o nákup, ale o to, aby technologie ve škole opravdu fungovaly.' },
+  { title: 'Konzultace', desc: 'Pomůžu vašemu týmu zkrátit cestu od nápadu k výsledku pomocí AI. Bez zbytečných mezičlánků, bez dlouhého čekání.' },
   { title: 'Tvorba obsahu', desc: 'Newslettery, vzdělávací materiály, videonávody, prezentace. Obsah, který má dopad.' },
 ]
 
@@ -30,31 +31,27 @@ const Offer = () => {
         <p className="text-lg text-gray-500 max-w-[600px] leading-[1.7]">
           Pracuji se školami a firmami, které chtějí technologie nejen nakoupit, ale i reálně využívat.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-          <div className="py-8">
-            <h3 className="font-serif text-[1.4rem] text-dark font-normal mb-3">
-              {offers[0].title}
-            </h3>
-            <p className="text-base text-gray-500 leading-[1.7]">
-              {offers[0].desc}
-            </p>
-          </div>
-          <div className="py-8 md:border-l md:border-gray-300 md:pl-8">
-            <h3 className="font-serif text-[1.4rem] text-dark font-normal mb-3">
-              {offers[1].title}
-            </h3>
-            <p className="text-base text-gray-500 leading-[1.7]">
-              {offers[1].desc}
-            </p>
-          </div>
-          <div className="py-8 md:border-l md:border-gray-300 md:pl-8">
-            <h3 className="font-serif text-[1.4rem] text-dark font-normal mb-3">
-              {offers[2].title}
-            </h3>
-            <p className="text-base text-gray-500 leading-[1.7]">
-              {offers[2].desc}
-            </p>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+          {offers.map((offer, i) => (
+            <div
+              key={i}
+              className={`py-8 ${i > 0 ? 'md:border-l md:border-gray-300 md:pl-8' : ''}`}
+            >
+              <div className="min-h-[1.25rem] mb-2">
+                {offer.tag && (
+                  <span className="text-[0.7rem] font-semibold tracking-[0.1em] uppercase text-accent">
+                    {offer.tag}
+                  </span>
+                )}
+              </div>
+              <h3 className="font-serif text-[1.4rem] text-dark font-normal mb-3">
+                {offer.title}
+              </h3>
+              <p className="text-base text-gray-500 leading-[1.7]">
+                {offer.desc}
+              </p>
+            </div>
+          ))}
         </div>
         <div className="mt-12">
           <button

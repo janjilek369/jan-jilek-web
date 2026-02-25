@@ -37,10 +37,10 @@ const About = () => {
               Posledních 15 let pracuju v B2B prodeji technologií do škol. Pomáhám tisícovce škol s výběrem, nákupem i zavedením technologií do praxe. Ale obchod je jen část toho, co dělám. Tvořím obsah, vedu školení, buduji projekty. Rozumím celému procesu a dokážu doručit komplexní řešení bez zbytečných mezičlánků.
             </p>
             <p className="text-lg text-gray-700 leading-[1.8]">
-              Miluju ekosystém Apple. Pracuju na Macu, přemýšlím s Claude, tvořím v Gammě. Věřím, že nejlepší práce vzniká s nejlepšími nástroji.
+              Miluju ekosystém Apple. Denně pracuju s nejlepšími AI nástroji — vybírám ten správný podle situace, ne ze zvyku. Věřím, že nejlepší práce vzniká s nejlepšími nástroji.
             </p>
             <p className="text-lg text-gray-700 leading-[1.8]">
-              Mimo práci mě najdete v CrossFit boxu. Mám dvě děti a ženu, která se mnou tu cestu sdílí.
+              Mimo práci mě najdete na CrossFitu. Mám dvě děti a ženu, která se mnou tu cestu sdílí.
             </p>
           </div>
         </div>

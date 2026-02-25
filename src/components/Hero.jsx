@@ -1,3 +1,5 @@
+import { posthog } from '../lib/posthog'
+
 const Hero = () => {
   const scrollTo = (id) => {
     const el = document.getElementById(id)
@@ -18,8 +20,11 @@ const Hero = () => {
             <h1 className="font-serif text-[clamp(2.8rem,5vw,4.2rem)] leading-[1.1] text-dark font-normal mb-6 tracking-tight">
               Obchod, vzdělávání a AI. Propojuji je do projektů, které mají <em className="italic text-accent">dopad.</em>
             </h1>
-            <p className="text-lg text-gray-500 max-w-[480px] mb-10 leading-[1.7]">
-              Patnáct let zkušeností v B2B prodeji a školení. Dnes s pomocí AI dokážu za den to, co dřív trvalo týdny. Hledám lidi a prostředí, kde tohle dává smysl.
+            <p className="text-lg text-gray-500 max-w-[480px] mb-4 leading-[1.7]">
+              Patnáct let zkušeností v B2B prodeji a školení. Dnes s pomocí AI dokážu za den to, co dřív trvalo týdny.
+            </p>
+            <p className="text-lg text-accent max-w-[480px] mb-10 leading-[1.7] font-medium">
+              Hledám projekty a lidi, kde má smysl propojit zkušenost, AI a chuť dotahovat věci do konce.
             </p>
             <div className="flex gap-4">
               <button
@@ -33,6 +38,7 @@ const Hero = () => {
                 href="https://www.linkedin.com/in/jan-j%C3%ADlek-351356169/"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => posthog.capture('linkedin_profile_clicked')}
                 className="inline-flex items-center gap-2 py-2.5 px-6 bg-transparent text-dark border border-gray-300 rounded-full text-sm font-medium font-sans transition-colors hover:border-dark"
               >
                 LinkedIn
@@ -41,6 +47,7 @@ const Hero = () => {
                 href="https://substack.com/@jilekjan"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => posthog.capture('newsletter_subscription_started')}
                 className="inline-flex items-center gap-2 py-2.5 px-6 bg-transparent text-dark border border-gray-300 rounded-full text-sm font-medium font-sans transition-colors hover:border-dark"
               >
                 Substack

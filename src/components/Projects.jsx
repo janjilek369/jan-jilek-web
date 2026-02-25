@@ -1,11 +1,13 @@
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
+import { posthog } from '../lib/posthog'
 
 const projects = [
-  { tag: 'VLASTNÍ PRODUKT', title: 'Webináře Gamma pro školy', desc: 'Vlastní produkt. Od tvorby obsahu přes prodejní stránku až po realizaci. Školím učitele, jak s AI nástrojem Gamma vytvářet moderní výukové materiály za zlomek času.', href: 'https://gamma-pro-ucitele-0rqz3vc.gamma.site/', linkText: 'Zobrazit' },
-  { tag: 'WEB', title: 'modernivyuka.digital', desc: 'Kompletní web vytvořený s pomocí AI. Od obsahu přes design po nasazení. Dva dny práce, žádný externí tým.', href: 'https://modernivyuka.digital', linkText: 'Navštívit' },
-  { tag: 'BLOG', title: 'Substack / AI v praxi', desc: 'Pravidelné články o tom, jak AI reálně pomáhá v každodenní práci. Praktické tipy, žádné buzzwordy.', href: 'https://substack.com/@jilekjan', linkText: 'Číst články' },
-  { tag: 'EVENT', title: 'Konference pro učitele', desc: 'Spolupořádám konferenci pro 200+ učitelů, kde prezentuji technologické služby a novinky pro školy.', href: null, linkText: null },
-  { tag: 'AI PROJEKT', title: 'Tento web', desc: 'Navržený a postavený s pomocí AI za jedno odpoledne. Design, texty, kompletní realizace.', href: null, linkText: null },
+  { tag: 'VLASTNÍ PRODUKT', title: 'Webináře Gamma pro školy', desc: 'Vlastní produkt. Od tvorby obsahu přes prodejní stránku až po realizaci. Školím učitele, jak s AI nástrojem Gamma vytvářet moderní výukové materiály za zlomek času.', href: 'https://gamma-pro-ucitele-0rqz3vc.gamma.site/', linkText: 'Zobrazit', captureEvent: 'gamma_training_clicked' },
+  { tag: 'WEB', title: 'modernivyuka.digital', desc: 'Kompletní web vytvořený s pomocí AI. Od obsahu přes design po nasazení. Dva dny práce, žádný externí tým.', href: 'https://modernivyuka.digital', linkText: 'Navštívit', captureEvent: null },
+  { tag: 'BLOG', title: 'Substack / AI v praxi', desc: 'Pravidelné články o tom, jak AI reálně pomáhá v každodenní práci. Praktické tipy, žádné buzzwordy.', href: 'https://substack.com/@jilekjan', linkText: 'Číst články', captureEvent: 'newsletter_subscription_started' },
+  { tag: 'AI PROJEKT', title: 'TCO kalkulačka', desc: 'Nástroj pro školy, který ukáže celkové náklady na technologie za 3–7 let. Postaveno s AI, bez programátora, bez externího týmu.', href: 'https://tco-kalkulacka.vercel.app/', linkText: 'Vyzkoušet', captureEvent: null },
+  { tag: 'EVENT', title: 'Konference pro učitele', desc: 'Spolupořádám konferenci pro 200+ učitelů, kde prezentuji technologické služby a novinky pro školy.', href: 'https://ucitelskysummit.cz', linkText: 'Navštívit', captureEvent: null },
+  { tag: 'AI PROJEKT', title: 'Tento web', desc: 'Navržený a postavený s pomocí AI za jedno odpoledne. Design, texty, kompletní realizace.', scrollToTop: true, linkText: 'Jsi tady', captureEvent: null },
 ]
 
 const ArrowIcon = () => (
@@ -48,16 +50,28 @@ const Projects = () => {
               <p className="text-base text-gray-500 leading-[1.7] flex-1">
                 {p.desc}
               </p>
-              {p.href && (
+              {p.scrollToTop ? (
                 <a
-                  href={p.href}
-                  target={p.href.startsWith('http') ? '_blank' : undefined}
-                  rel={p.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  href="#top"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    document.getElementById('top')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                  }}
                   className="inline-flex items-center gap-1.5 mt-6 text-sm font-semibold text-dark hover:text-accent transition-colors group"
                 >
                   {p.linkText} <ArrowIcon />
                 </a>
-              )}
+              ) : p.href ? (
+                <a
+                  href={p.href}
+                  target={p.href.startsWith('http') ? '_blank' : undefined}
+                  rel={p.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  onClick={() => p.captureEvent && posthog.capture(p.captureEvent)}
+                  className="inline-flex items-center gap-1.5 mt-6 text-sm font-semibold text-dark hover:text-accent transition-colors group"
+                >
+                  {p.linkText} <ArrowIcon />
+                </a>
+              ) : null}
             </div>
           ))}
         </div>
