@@ -16,22 +16,22 @@ const Testimonials = () => {
     <section
       id="testimonials"
       ref={ref}
-      className={`py-16 px-8 bg-gray-50 ${isVisible ? 'fade-up visible' : 'fade-up'}`}
+      className={`py-16 px-8 bg-gray-50 dark:bg-[#111114] ${isVisible ? 'fade-up visible' : 'fade-up'}`}
     >
       <div className="max-w-[1200px] mx-auto">
         <span className="text-[0.75rem] font-semibold tracking-[0.15em] uppercase text-accent block mb-4">
           Reference
         </span>
-        <h2 className="font-serif text-[clamp(2rem,3.5vw,3rem)] text-dark font-normal tracking-tight mb-10 leading-[1.15]">
+        <h2 className="font-serif text-[clamp(2rem,3.5vw,3rem)] text-dark dark:text-white font-normal tracking-tight mb-10 leading-[1.15]">
           Co říkají účastníci
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials.map((t, i) => (
             <div key={i}>
-              <p className="text-base text-gray-700 leading-[1.7] mb-3">
+              <p className="text-base text-gray-700 dark:text-gray-300 leading-[1.7] mb-3">
                 {t.quote}
               </p>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-500 dark:text-gray-400">
                 {t.name}, {t.role}
               </p>
             </div>

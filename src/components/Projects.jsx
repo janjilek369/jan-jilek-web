@@ -23,31 +23,31 @@ const Projects = () => {
     <section
       id="projects"
       ref={ref}
-      className={`py-16 px-8 bg-gray-50 ${isVisible ? 'fade-up visible' : 'fade-up'}`}
+      className={`py-16 px-8 bg-gray-50 dark:bg-[#111114] ${isVisible ? 'fade-up visible' : 'fade-up'}`}
     >
       <div className="max-w-[1200px] mx-auto">
         <span className="text-[0.75rem] font-semibold tracking-[0.15em] uppercase text-accent block mb-4">
           Portfolio
         </span>
-        <h2 className="font-serif text-[clamp(2rem,3.5vw,3rem)] text-dark font-normal tracking-tight mb-6 leading-[1.15]">
+        <h2 className="font-serif text-[clamp(2rem,3.5vw,3rem)] text-dark dark:text-white font-normal tracking-tight mb-6 leading-[1.15]">
           Důkazy, ne sliby
         </h2>
-        <p className="text-lg text-gray-500 max-w-[600px] leading-[1.7] mb-0">
+        <p className="text-lg text-gray-500 dark:text-gray-400 max-w-[600px] leading-[1.7] mb-0">
           Vlastní projekty od nápadu přes realizaci po propagaci. Tady je výběr.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
           {projects.map((p, i) => (
             <div
               key={i}
-              className="p-8 md:p-10 lg:py-10 lg:px-8 border border-gray-100 rounded-xl bg-white flex flex-col transition-all duration-[0.4s] ease-smooth hover:border-accent-light hover:shadow-card-hover hover:-translate-y-1"
+              className="p-8 md:p-10 lg:py-10 lg:px-8 border border-gray-100 dark:border-gray-800 rounded-xl bg-white dark:bg-[#18181B] flex flex-col transition-all duration-[0.4s] ease-smooth hover:border-accent-light dark:hover:border-accent/30 hover:shadow-card-hover dark:hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)] hover:-translate-y-1"
             >
               <div className="text-[0.7rem] font-semibold tracking-[0.1em] uppercase text-accent mb-4">
                 {p.tag}
               </div>
-              <h3 className="font-serif text-[1.35rem] text-dark font-normal mb-3">
+              <h3 className="font-serif text-[1.35rem] text-dark dark:text-white font-normal mb-3">
                 {p.title}
               </h3>
-              <p className="text-base text-gray-500 leading-[1.7] flex-1">
+              <p className="text-base text-gray-500 dark:text-gray-400 leading-[1.7] flex-1">
                 {p.desc}
               </p>
               {p.scrollToTop ? (
@@ -57,7 +57,7 @@ const Projects = () => {
                     e.preventDefault()
                     document.getElementById('top')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
                   }}
-                  className="inline-flex items-center gap-1.5 mt-6 text-sm font-semibold text-dark hover:text-accent transition-colors group"
+                  className="inline-flex items-center gap-1.5 mt-6 text-sm font-semibold text-dark dark:text-white hover:text-accent transition-colors group"
                 >
                   {p.linkText} <ArrowIcon />
                 </a>
@@ -67,7 +67,7 @@ const Projects = () => {
                   target={p.href.startsWith('http') ? '_blank' : undefined}
                   rel={p.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                   onClick={() => p.captureEvent && posthog.capture(p.captureEvent)}
-                  className="inline-flex items-center gap-1.5 mt-6 text-sm font-semibold text-dark hover:text-accent transition-colors group"
+                  className="inline-flex items-center gap-1.5 mt-6 text-sm font-semibold text-dark dark:text-white hover:text-accent transition-colors group"
                 >
                   {p.linkText} <ArrowIcon />
                 </a>

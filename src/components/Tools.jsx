@@ -18,32 +18,32 @@ const Tools = () => {
     <section
       id="tools"
       ref={ref}
-      className={`py-16 px-8 bg-gray-50 ${isVisible ? 'fade-up visible' : 'fade-up'}`}
+      className={`py-16 px-8 bg-gray-50 dark:bg-[#111114] ${isVisible ? 'fade-up visible' : 'fade-up'}`}
     >
       <div className="max-w-[1200px] mx-auto">
         <span className="text-[0.75rem] font-semibold tracking-[0.15em] uppercase text-accent block mb-4">
           Stack
         </span>
-        <h2 className="font-serif text-[clamp(2rem,3.5vw,3rem)] text-dark font-normal tracking-tight mb-10 leading-[1.15]">
+        <h2 className="font-serif text-[clamp(2rem,3.5vw,3rem)] text-dark dark:text-white font-normal tracking-tight mb-10 leading-[1.15]">
           S čím pracuji
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {tools.map((t, i) =>
             t.type === 'ai' ? (
               <div key={i} className="text-left">
-                <div className="font-serif text-xl text-dark font-normal mb-1">
+                <div className="font-serif text-xl text-dark dark:text-white font-normal mb-1">
                   {t.tools.map((ai) => ai.name).join(' | ')}
                 </div>
-                <div className="text-base text-gray-500">
+                <div className="text-base text-gray-500 dark:text-gray-400">
                   {t.subtitle}
                 </div>
               </div>
             ) : (
               <div key={i} className="text-left">
-                <div className="font-serif text-xl text-dark font-normal mb-1">
+                <div className="font-serif text-xl text-dark dark:text-white font-normal mb-1">
                   {t.name}
                 </div>
-                <div className="text-base text-gray-500">
+                <div className="text-base text-gray-500 dark:text-gray-400">
                   {t.desc}
                 </div>
               </div>

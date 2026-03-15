@@ -25,17 +25,17 @@ const Offer = () => {
         <span className="text-[0.75rem] font-semibold tracking-[0.15em] uppercase text-accent block mb-4">
           Nabídka
         </span>
-        <h2 className="font-serif text-[clamp(2rem,3.5vw,3rem)] text-dark font-normal tracking-tight mb-6 leading-[1.15]">
+        <h2 className="font-serif text-[clamp(2rem,3.5vw,3rem)] text-dark dark:text-white font-normal tracking-tight mb-6 leading-[1.15]">
           Jak vám můžu pomoct
         </h2>
-        <p className="text-lg text-gray-500 max-w-[600px] leading-[1.7]">
+        <p className="text-lg text-gray-500 dark:text-gray-400 max-w-[600px] leading-[1.7]">
           Pracuji se školami a firmami, které chtějí technologie nejen nakoupit, ale i reálně využívat.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
           {offers.map((offer, i) => (
             <div
               key={i}
-              className={`py-8 ${i > 0 ? 'md:border-l md:border-gray-300 md:pl-8' : ''}`}
+              className={`py-8 ${i > 0 ? 'md:border-l md:border-gray-300 dark:md:border-gray-700 md:pl-8' : ''}`}
             >
               <div className="min-h-[1.25rem] mb-2">
                 {offer.tag && (
@@ -44,10 +44,10 @@ const Offer = () => {
                   </span>
                 )}
               </div>
-              <h3 className="font-serif text-[1.4rem] text-dark font-normal mb-3">
+              <h3 className="font-serif text-[1.4rem] text-dark dark:text-white font-normal mb-3">
                 {offer.title}
               </h3>
-              <p className="text-base text-gray-500 leading-[1.7]">
+              <p className="text-base text-gray-500 dark:text-gray-400 leading-[1.7]">
                 {offer.desc}
               </p>
             </div>
@@ -57,7 +57,7 @@ const Offer = () => {
           <button
             type="button"
             onClick={() => scrollTo('contact')}
-            className="inline-flex items-center gap-2 py-3.5 px-8 bg-dark text-white rounded-full text-sm font-medium font-sans transition-all duration-300 hover:bg-accent hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 py-3.5 px-8 bg-dark dark:bg-white dark:text-dark text-white rounded-full text-sm font-medium font-sans transition-all duration-300 hover:bg-accent dark:hover:bg-accent dark:hover:text-white hover:-translate-y-0.5"
           >
             Ozvěte se mi →
           </button>

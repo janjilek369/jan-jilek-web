@@ -91,35 +91,35 @@ const Blog = () => {
     <section
       id="blog"
       ref={ref}
-      className={`py-16 px-8 bg-gray-50 ${isVisible ? 'fade-up visible' : 'fade-up'}`}
+      className={`py-16 px-8 bg-gray-50 dark:bg-[#111114] ${isVisible ? 'fade-up visible' : 'fade-up'}`}
     >
       <div className="max-w-[1200px] mx-auto">
         <span className="text-[0.75rem] font-semibold tracking-[0.15em] uppercase text-accent block mb-4">
           Blog
         </span>
-        <h2 className="font-serif text-[clamp(2rem,3.5vw,3rem)] text-dark font-normal tracking-tight mb-6 leading-[1.15]">
+        <h2 className="font-serif text-[clamp(2rem,3.5vw,3rem)] text-dark dark:text-white font-normal tracking-tight mb-6 leading-[1.15]">
           AI v praxi
         </h2>
-        <p className="text-lg text-gray-500 max-w-[600px] leading-[1.7] mb-10">
+        <p className="text-lg text-gray-500 dark:text-gray-400 max-w-[600px] leading-[1.7] mb-10">
           Pravidelné články o tom, jak AI reálně pomáhá v každodenní práci. Praktické tipy, žádné buzzwordy.
         </p>
 
         {loading && (
-          <p className="text-base text-gray-500">Načítám články…</p>
+          <p className="text-base text-gray-500 dark:text-gray-400">Načítám články…</p>
         )}
 
         {!loading && posts.length > 0 && (
           <ul className="space-y-10 list-none p-0 m-0">
             {posts.map((post, i) => (
               <li key={i}>
-                <h3 className="font-serif text-[1.35rem] text-dark font-normal mb-1">
+                <h3 className="font-serif text-[1.35rem] text-dark dark:text-white font-normal mb-1">
                   {post.title}
                 </h3>
-                <p className="text-sm text-gray-400 mb-3">
+                <p className="text-sm text-gray-400 dark:text-gray-500 mb-3">
                   {formatDate(post.pubDate)}
                 </p>
                 {post.excerpt && (
-                  <p className="text-base text-gray-500 leading-[1.7] mb-4">
+                  <p className="text-base text-gray-500 dark:text-gray-400 leading-[1.7] mb-4">
                     {post.excerpt}
                   </p>
                 )}
@@ -128,7 +128,7 @@ const Blog = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => posthog.capture('newsletter_subscription_started')}
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-dark hover:text-accent transition-colors group"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-dark dark:text-white hover:text-accent transition-colors group"
                 >
                   Číst <ArrowIcon />
                 </a>
@@ -138,7 +138,7 @@ const Blog = () => {
         )}
 
         {!loading && posts.length === 0 && (
-          <p className="text-base text-gray-500 mb-8">Články se nepodařilo načíst.</p>
+          <p className="text-base text-gray-500 dark:text-gray-400 mb-8">Články se nepodařilo načíst.</p>
         )}
 
         <div className="mt-12">
@@ -147,7 +147,7 @@ const Blog = () => {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => posthog.capture('newsletter_subscription_started')}
-            className="inline-flex items-center gap-2 py-3.5 px-8 bg-dark text-white rounded-full text-sm font-medium font-sans transition-all duration-300 hover:bg-accent hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 py-3.5 px-8 bg-dark dark:bg-white dark:text-dark text-white rounded-full text-sm font-medium font-sans transition-all duration-300 hover:bg-accent dark:hover:bg-accent dark:hover:text-white hover:-translate-y-0.5"
           >
             Sledovat na Substacku →
           </a>

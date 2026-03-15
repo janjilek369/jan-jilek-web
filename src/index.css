@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --color-accent: #3B5998;
+  --color-accent-light: #E8EDF5;
+}
+
+.dark {
+  --color-accent: #8BAAD9;
+  --color-accent-light: rgba(139, 170, 217, 0.15);
+}
+
 html {
   scroll-behavior: smooth;
   font-size: 16px;
@@ -13,6 +23,12 @@ body {
   background: #FFFFFF;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark body {
+  color: #D4D4D8;
+  background: #0A0A0F;
 }
 
 /* Fade-up on scroll (prototype match) */

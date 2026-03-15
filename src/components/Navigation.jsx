@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
+import ThemeToggle from './ThemeToggle'
 
 const navItems = [
   { id: 'about', label: 'O mně' },
@@ -10,7 +11,7 @@ const navItems = [
   { id: 'contact', label: 'Kontakt' },
 ]
 
-const Navigation = () => {
+const Navigation = ({ isDark, toggleTheme }) => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
 
@@ -30,7 +31,7 @@ const Navigation = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-[0.4s] ease-smooth ${
         isScrolled
-          ? 'bg-white backdrop-blur-lg border-b border-gray-200 py-3'
+          ? 'bg-white/95 dark:bg-[#0A0A0F]/95 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800 py-3'
           : 'bg-transparent py-5'
       }`}
     >
@@ -38,7 +39,7 @@ const Navigation = () => {
         <button
           type="button"
           onClick={() => scrollTo('hero')}
-          className="font-sans font-semibold text-[1.1rem] text-dark tracking-tight"
+          className="font-sans font-semibold text-[1.1rem] text-dark dark:text-white tracking-tight"
         >
           Jan Jílek
         </button>
@@ -49,7 +50,7 @@ const Navigation = () => {
               <button
                 type="button"
                 onClick={() => scrollTo(id)}
-                className="text-gray-500 text-base font-medium tracking-wide hover:text-dark transition-colors"
+                className="text-gray-500 dark:text-gray-400 text-base font-medium tracking-wide hover:text-dark dark:hover:text-white transition-colors"
               >
                 {label}
               </button>
@@ -57,31 +58,34 @@ const Navigation = () => {
           ))}
         </ul>
 
-        <button
-          type="button"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden p-2 text-dark"
-          aria-label="Menu"
-        >
-          {mobileOpen ? (
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
-          ) : (
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
-          )}
-        </button>
+        <div className="flex items-center gap-1">
+          <ThemeToggle isDark={isDark} onToggle={toggleTheme} />
+          <button
+            type="button"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="md:hidden p-2 text-dark dark:text-white"
+            aria-label="Menu"
+          >
+            {mobileOpen ? (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+            ) : (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+            )}
+          </button>
+        </div>
       </div>
 
       {mobileOpen &&
         createPortal(
           <div
-            className="md:hidden fixed inset-0 w-screen min-h-screen bg-white z-[9999] flex flex-col pt-20 px-8"
+            className="md:hidden fixed inset-0 w-screen min-h-screen bg-white dark:bg-[#0A0A0F] z-[9999] flex flex-col pt-20 px-8"
             style={{ minHeight: '100dvh' }}
             aria-hidden={!mobileOpen}
           >
             <button
               type="button"
               onClick={() => setMobileOpen(false)}
-              className="absolute top-5 right-8 p-2 text-dark"
+              className="absolute top-5 right-8 p-2 text-dark dark:text-white"
               aria-label="Zavřít menu"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
@@ -91,7 +95,7 @@ const Navigation = () => {
                 key={id}
                 type="button"
                 onClick={() => scrollTo(id)}
-                className="block w-full text-left py-3 text-gray-500 font-medium hover:text-dark text-lg border-b border-gray-100 last:border-0"
+                className="block w-full text-left py-3 text-gray-500 dark:text-gray-400 font-medium hover:text-dark dark:hover:text-white text-lg border-b border-gray-100 dark:border-gray-800 last:border-0"
               >
                 {label}
               </button>

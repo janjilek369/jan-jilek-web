@@ -20,22 +20,22 @@ const Competencies = () => {
         <span className="text-[0.75rem] font-semibold tracking-[0.15em] uppercase text-accent block mb-4">
           Kompetence
         </span>
-        <h2 className="font-serif text-[clamp(2rem,3.5vw,3rem)] text-dark font-normal tracking-tight mb-6 leading-[1.15]">
+        <h2 className="font-serif text-[clamp(2rem,3.5vw,3rem)] text-dark dark:text-white font-normal tracking-tight mb-6 leading-[1.15]">
           Čím se odlišuji
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
           {competencies.map((c, i) => (
             <div
               key={i}
-              className="p-10 bg-white border border-gray-100 rounded-xl transition-all duration-[0.4s] ease-smooth hover:border-accent-light hover:shadow-card-hover hover:-translate-y-1"
+              className="p-10 bg-white dark:bg-[#18181B] border border-gray-100 dark:border-gray-800 rounded-xl transition-all duration-[0.4s] ease-smooth hover:border-accent-light dark:hover:border-accent/30 hover:shadow-card-hover dark:hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)] hover:-translate-y-1"
             >
-              <div className="font-serif text-2xl text-gray-300 mb-5 italic">
+              <div className="font-serif text-2xl text-gray-300 dark:text-gray-600 mb-5 italic">
                 {c.num}
               </div>
-              <h3 className="font-serif text-2xl text-dark font-normal mb-3">
+              <h3 className="font-serif text-2xl text-dark dark:text-white font-normal mb-3">
                 {c.title}
               </h3>
-              <p className="text-base text-gray-500 leading-[1.7]">
+              <p className="text-base text-gray-500 dark:text-gray-400 leading-[1.7]">
                 {c.desc}
               </p>
             </div>
