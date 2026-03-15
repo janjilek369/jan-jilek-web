@@ -35,7 +35,7 @@ const Contact = () => {
                 target={link.href.startsWith('http') ? '_blank' : undefined}
                 rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                 onClick={() => posthog.capture(link.event)}
-                className="flex items-center gap-4 py-5 px-6 border border-[rgba(255,255,255,0.1)] rounded-xl text-white transition-all duration-300 hover:border-[rgba(255,255,255,0.3)] hover:bg-[rgba(255,255,255,0.05)]"
+                className="flex items-center gap-4 py-5 px-6 border border-[rgba(255,255,255,0.1)] rounded-xl text-white transition-all duration-300 hover:border-accent hover:bg-accent hover:-translate-y-0.5"
               >
                 <div className="w-10 h-10 rounded-full bg-[rgba(255,255,255,0.1)] flex items-center justify-center text-[1.1rem] flex-shrink-0">
                   {link.icon}
